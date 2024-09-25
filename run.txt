@@ -1,0 +1,4 @@
+docker run --name db -e MYSQL_ROOT_PASSWORD=Cpe123456 -p 3306:3306 -d mysql
+docker run --name phpmyadmin -d --link db:db -p 8080:80 phpmyadmin
+docker build -t php-app .
+docker run -d -p 8889:80 -v ${PWD}/src:/var/www/html --name app php-app
